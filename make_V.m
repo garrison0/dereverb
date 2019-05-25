@@ -11,7 +11,7 @@ theFiles = dir(filePattern);
 V = [];
 
 % normally: 1 : length(theFiles)
-for k = 1 : 1
+for k = 1 : length(theFiles)
     baseFileName = theFiles(k).name;
     fullFileName = fullfile(myFolder, baseFileName);
     
@@ -20,7 +20,7 @@ for k = 1 : 1
     s = resample(s,16000,fs);
     spectrogram = stft(s', 64, 16, 0, hann(64));
 
-    V = [V spectrogram];
+    V = [V abs(spectrogram)];
 end
 
 [R,C] = size(V);

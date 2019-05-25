@@ -10,8 +10,8 @@ for n = 1:len
 end
 
 %normalize
-h = h / (sqrt(sum(abs(h .^2)) / size(h,1)));
 H = stft(h',64, 16, 0, hann(64));
+H = normr(abs(H));
 H = sum(H,1) / size(H,1);
 
 end
